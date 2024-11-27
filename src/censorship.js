@@ -14,5 +14,20 @@
  * @returns {function}
  */
 module.exports.censorship = function censorship(forbidden) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function string(str) {
+    let strArr = str.split(' ');
+    let finalArr = [];
+
+    for (let i = 0; i < strArr.length; i++) {
+      if (forbidden.includes(strArr[i])) {
+        finalArr.push('*'.repeat(strArr[i].length));
+      } else {
+        finalArr.push(strArr[i]);
+      }
+    }
+    return finalArr.join('');
+  };
 };
+
+//решить проблему с заменой внутри слов (если 1 буква)
+//решить проблему с заменой фраз с пробелами

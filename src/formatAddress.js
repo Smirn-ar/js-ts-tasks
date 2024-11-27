@@ -4,5 +4,14 @@
  * @returns {function}
  */
 module.exports.formatAddress = function formatAddress() {
-  throw new Error('Not implemented'); // remove me and write a solution
+  return function (address) {
+    const streetF = address.street;
+    const houseF = address.house;
+    const apartmentF = address.apartment;
+    const cityF = address.city;
+    const postalCodeF = address.postalCode;
+    const countryF = address.country;
+
+    return `${streetF}, ${houseF}, ${apartmentF}, ${cityF}, ${postalCodeF}, ${countryF}`;
+  };
 };
