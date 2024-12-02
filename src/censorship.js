@@ -15,19 +15,13 @@
  */
 module.exports.censorship = function censorship(forbidden) {
   return function string(str) {
-    let strArr = str.split(' ');
-    let finalArr = [];
+    let result = str;
 
-    for (let i = 0; i < strArr.length; i++) {
-      if (forbidden.includes(strArr[i])) {
-        finalArr.push('*'.repeat(strArr[i].length));
-      } else {
-        finalArr.push(strArr[i]);
-      }
+    for (let i = 0; i < forbidden.length; i++) {
+      const wordStars = '*'.repeat(forbidden[i].length);
+      result = result.split(forbidden[i]).join(wordStars);
     }
-    return finalArr.join('');
+
+    return result;
   };
 };
-
-//решить проблему с заменой внутри слов (если 1 буква)
-//решить проблему с заменой фраз с пробелами
