@@ -14,9 +14,9 @@
  */
 module.exports.palindrome = function palindrome(TestUtils) {
   return function (str) {
+    let resultStr = '';
     const newStr = str.toLowerCase();
 
-    let resultStr = '';
     for (let i = 0; i < newStr.length; i++) {
       const char = newStr[i];
       if (/^[a-z0-9]$/.test(char)) {
@@ -24,17 +24,6 @@ module.exports.palindrome = function palindrome(TestUtils) {
       }
     }
 
-    const isPalindrome = function (resultStr) {
-      if (typeof resultStr !== 'string') {
-        throw new Error(`Cannot find variable "str" in a provided context ${JSON.stringify(resultStr)}`);
-      }
-
-      if (typeof resultStr === 'string' && resultStr.length === 0) {
-        return true;
-      }
-
-      return resultStr.split('').reverse().join('') === resultStr;
-    };
-    return isPalindrome(resultStr);
+    return TestUtils.isPalindrome.call({ str: resultStr });
   };
 };
