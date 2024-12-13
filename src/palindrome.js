@@ -27,3 +27,5 @@ module.exports.palindrome = function palindrome(TestUtils) {
     return TestUtils.isPalindrome.call({ str: resultStr });
   };
 };
+
+//для проверки
