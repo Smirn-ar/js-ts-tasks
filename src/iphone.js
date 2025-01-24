@@ -31,8 +31,8 @@ customElements.define(
         .iphone-x {
         position: relative;
         margin: 40px auto;
-        width: 360px;
-        height: 780px;
+        width: 430px;
+        height: 931.09px;
         background-color: #000000;
         // background-color: #7371ee;
         // background-image: linear-gradient(60deg, #7371ee 1%, #a1d9d6 100%);
