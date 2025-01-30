@@ -6,5 +6,25 @@
  * @returns {number}
  */
 module.exports.converter = function (value: number, from: string, to: string): number {
-  throw new Error('Not implemented'); // delete this line and write your code
+  let finalValue!: Number;
+
+  if (from === 'm' && to === 'mi') {
+    finalValue = value / 1609.34;
+  } else if (from === 'mi' && to === 'm') {
+    finalValue = value * 1609.34404;
+  }
+
+  if (from === 'gr' && to === 'pound') {
+    finalValue = value / 453.592;
+  } else if (from === 'pound' && to === 'gr') {
+    finalValue = value * 453.592;
+  }
+
+  if (from === 'C' && to === 'K') {
+    finalValue = value + 273.15;
+  } else if (from === 'K' && to === 'C') {
+    finalValue = value - 273.15;
+  }
+
+  return parseFloat(finalValue.toFixed(2));
 };

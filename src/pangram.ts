@@ -6,5 +6,41 @@
  * @returns {boolean}
  */
 module.exports.pangram = function (word: string | number): boolean {
-  throw new Error('Not implemented'); // delete this line and write your code
+  let result: boolean = true;
+  if (typeof word === 'number') {
+    let strNum: string = String(word);
+    if (strNum.length < 10) {
+      result = false;
+    } else {
+      for (let j = 0; j < 10; j++) {
+        let found: boolean = false;
+        for (let i = 0; i < strNum.length; i++) {
+          if (strNum[i] === String(j)) {
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          result = false;
+          break;
+        }
+      }
+    }
+  }
+  if (typeof word === 'string') {
+    if (word.length < 27) {
+      result = false;
+    } else {
+      const alphabet: string = 'abcdefghijklmnopqrstuvwxyz';
+      const cleanStr: string = word.toLowerCase().replace(/\s/g, '');
+      for (let i = 0; i < alphabet.length; i++) {
+        if (!cleanStr.includes(String(alphabet[i]))) {
+          result = false;
+        }
+      }
+      result = true;
+    }
+  }
+
+  return result;
 };

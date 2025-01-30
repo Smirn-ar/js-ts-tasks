@@ -3,6 +3,22 @@
  * @param {Date | string} targetDate
  * @returns {number}
  */
+
 module.exports.getDaysToNewYear = function getDaysToNewYear(targetDate: Date | string): number {
-  throw new Error('Not implemented'); // delete this line and write your code
+  let countOfDays!: number;
+  let dataOb!: Date;
+  const nextLearYear = new Date(2024, 0, 1);
+
+  if (typeof targetDate == 'string') {
+    let dateArr: number[] = targetDate.split('.').map(Number);
+    dataOb = new Date(dateArr[2]!, dateArr[1]! - 1, dateArr[0]);
+  }
+
+  if (typeof targetDate == 'object') {
+    dataOb = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+  }
+
+  let difference = nextLearYear.getTime() - dataOb.getTime();
+  countOfDays = Math.ceil(difference / (1000 * 3600 * 24));
+  return countOfDays;
 };
